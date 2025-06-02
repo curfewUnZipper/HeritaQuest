@@ -60,7 +60,7 @@ export const loadQuiz = createAsyncThunk<
     try {
       const token = localStorage.getItem('heritaQuestToken');
 
-      const response = await fetch('http://192.168.48.175:8080/ai/generateLocationQuiz', {
+      const response = await fetch('https://heritaquest-ip4c.onrender.com/ai/generateLocationQuiz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ Object.keys(response).forEach((key) => {
 
       console.log("Sending payload:", JSON.stringify({ id, marks, response: formattedResponse }));
 
-      const res = await fetch('http://192.168.48.175:8080/LocationQuiz/updateLocationQuizResponse', {
+      const res = await fetch('https://heritaquest-ip4c.onrender.com/LocationQuiz/updateLocationQuizResponse', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

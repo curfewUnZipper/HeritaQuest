@@ -35,7 +35,7 @@ export default function SignInPage() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://192.168.48.175:8080/public/login', {
+      const response = await fetch('https://heritaquest-ip4c.onrender.com/public/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

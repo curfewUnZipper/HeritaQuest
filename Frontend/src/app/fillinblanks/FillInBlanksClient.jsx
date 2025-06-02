@@ -26,7 +26,7 @@ export default function FillInBlanksClient() {
 
       setLoading(true);
       try {
-        const res = await fetch('http://192.168.48.175:8080/ai/generate-fill-Quiz', {
+        const res = await fetch('https://heritaquest-ip4c.onrender.com/ai/generate-fill-Quiz', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export default function FillInBlanksClient() {
 
     try {
       const res = await fetch(
-        'http://192.168.48.175:8080/FB-quiz/updateFbQuizResponse',
+        'https://heritaquest-ip4c.onrender.com/FB-quiz/updateFbQuizResponse',
         {
           method: 'PUT',
           headers: {

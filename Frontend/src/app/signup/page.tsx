@@ -34,7 +34,7 @@ export default function SignUpPage() {
       const baseUrl = process.env.NEXT_PUBLIC_API_URL; 
       console.log(baseUrl, name, email, password);
       
-      const response = await fetch('http://192.168.48.175:8080/public/Signup', {
+      const response = await fetch('https://heritaquest-ip4c.onrender.com/public/Signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, username, email, password }),

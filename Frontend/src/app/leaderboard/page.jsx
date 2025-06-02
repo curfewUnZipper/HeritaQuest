@@ -22,8 +22,8 @@ export default function LeaderboardPage() {
     setError(null);
 const endpoint =
   tab === 'quiz'
-    ? 'http://192.168.48.175:8080/LocationQuiz/getLeaderboard'
-    : 'http://192.168.48.175:8080/FB-quiz/getLeaderboard';
+    ? 'https://heritaquest-ip4c.onrender.com/LocationQuiz/getLeaderboard'
+    : 'https://heritaquest-ip4c.onrender.com/FB-quiz/getLeaderboard';
 
 fetch(endpoint, {
   headers: {

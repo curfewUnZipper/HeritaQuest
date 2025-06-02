@@ -21,7 +21,7 @@ export default function HistoryPage() {
     setError(null);
 
     // Fetch quiz history
-    fetch('http://192.168.48.175:8080/LocationQuiz/getHistory', {
+    fetch('https://heritaquest-ip4c.onrender.com/LocationQuiz/getHistory', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -35,7 +35,7 @@ export default function HistoryPage() {
       .finally(() => setLoading(false));
 
     // Fetch fill in the blanks history
-    fetch('http://192.168.48.175:8080/FB-quiz/getHistory', {
+    fetch('https://heritaquest-ip4c.onrender.com/FB-quiz/getHistory', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
