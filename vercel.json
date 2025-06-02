@@ -1,3 +1,7 @@
 {
-  "rootDirectory": "Frontend"
+  "projects": [
+    {
+      "rootDirectory": "Frontend"
+    }
+  ]
 }
