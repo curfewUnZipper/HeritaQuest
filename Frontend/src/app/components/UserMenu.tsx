@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMenuContext } from '../context/MenuContext';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/userSlice'
 
 const placeholderAvatar = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png';
 
@@ -16,6 +18,7 @@ export default function UserMenu() {
   const { isUserMenuOpen, setIsUserMenuOpen, closeAllMenus } = useMenuContext();
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
 
   // Close on outside click
   useEffect(() => {
@@ -39,15 +42,14 @@ export default function UserMenu() {
 
   // Sign out function
   const signOut = () => {
-  localStorage.removeItem('heritaQuestToken');
-  localStorage.removeItem('user');
+  dispatch(logout());
   setCurrentUser(null);
   setIsUserMenuOpen(false);
 };
 
 
   return (
-    <div ref={menuRef} className="absolute text-black top-4 right-4 z-[1000]">
+    <div ref={menuRef} className="absolute text-black top-4 right-4">
       <button
   onClick={() => {
     if (!isUserMenuOpen) closeAllMenus();
@@ -65,7 +67,7 @@ export default function UserMenu() {
 
 
       {isUserMenuOpen && (
-        <div className="mt-1 right-0 w-48 bg-white border rounded shadow-lg absolute">
+        <div className="mt-2 right-0 w-48 bg-white border rounded shadow-lg absolute z-[9999]">
           {!currentUser ? (
             <>
               <Link href="/signin">

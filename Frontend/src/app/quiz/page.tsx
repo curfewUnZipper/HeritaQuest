@@ -8,6 +8,8 @@ import {
   incrementScore,
   submitFinalQuiz,
 } from '../../store/quizSlice';
+import { fetchUserFromDB } from '../../store/userSlice';
+
 
 const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
@@ -56,6 +58,7 @@ export default function Quiz() {
 
       if (id) {
         dispatch(submitFinalQuiz({ id, marks, response }));
+        dispatch(fetchUserFromDB());
       }
       setShowScore(true);
       return;

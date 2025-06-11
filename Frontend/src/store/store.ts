@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import quizReducer from './quizSlice';
-import fillInTheBlanksReducer from './fillSlice';  // import your fill slice reducer
+import fillInTheBlanksReducer from './fillSlice'; 
+import userReducer from './userSlice';
 
 export const store = configureStore({
   reducer: {
     quiz: quizReducer,
-    fillInTheBlanks: fillInTheBlanksReducer,  // add fillInTheBlanks slice here
-    // other reducers
+    fillInTheBlanks: fillInTheBlanksReducer, 
+    user: userReducer,
   },
 });
 

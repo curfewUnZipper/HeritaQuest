@@ -6,10 +6,11 @@ import { loadQuiz } from '../../store/quizSlice';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+
 interface GameSelectMenuProps {
   onClose: () => void;
   locationName: string;
-  coordinates: [number, number] | null;
+  coordinates: [number, number] | null | undefined;
 }
 
 const themes = [
@@ -97,12 +98,12 @@ export default function GameSelectMenu({ onClose, locationName, coordinates }: G
   };
 
   return (
-    <div className="w-[28rem] h-[75vh] backdrop-blur-md bg-white/30 shadow-xl rounded-lg p-6 relative z-[9999]">
+    <div className="lg:w-[40vw] md:w-[40vw] sm:w-[50vw] h-[40vh] backdrop-blur-md bg-white/30 shadow-xl rounded-lg p-6 relative z-[9999] overflow-y-auto">
       <button
-        className="absolute top-2 right-2 text-lg font-bold text-red-600 hover:text-red-800"
+        className="absolute top-2 right-2 text-md text-white rounded-full px-3 py-1 bg-red-600 hover:bg-red-800"
         onClick={onClose}
       >
-        ×
+        x
       </button>
 
       {step === 'gameSelection' && (
@@ -148,12 +149,12 @@ export default function GameSelectMenu({ onClose, locationName, coordinates }: G
       {step === 'themeSelection' && (
         <>
           <h2 className="text-xl font-semibold text-gray-800 mb-6">Select a Theme:</h2>
-          <div className="space-y-4 mb-6">
+          <div className="flex flex-col  space-y-4 mb-6">
             {themes.map((theme) => (
               <button
                 key={theme}
                 onClick={() => setSelectedTheme(theme)}
-                className={`w-full py-3 px-4 rounded border ${
+                className={`py-3 px-4 rounded border ${
                   selectedTheme === theme
                     ? 'bg-green-600 text-white border-green-600'
                     : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'
@@ -175,7 +176,7 @@ export default function GameSelectMenu({ onClose, locationName, coordinates }: G
             <button
               onClick={handleThemeConfirm}
               disabled={!selectedTheme || loading}
-              className="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700 disabled:opacity-50"
+              className="px-4 py-2 mx-1 rounded bg-green-600 text-white hover:bg-green-700 disabled:opacity-50"
             >
               {loading ? 'Loading...' : 'Start'}
             </button>

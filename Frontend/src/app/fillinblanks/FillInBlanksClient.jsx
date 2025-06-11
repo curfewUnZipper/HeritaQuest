@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { fetchUserFromDB } from '../../store/userSlice';
 
 export default function FillInBlanksClient() {
   const [quiz, setQuiz] = useState(null);
@@ -11,6 +13,7 @@ export default function FillInBlanksClient() {
   const [loading, setLoading] = useState(true);
   const [submitLoading, setSubmitLoading] = useState(false);
   const [bearerToken, setBearerToken] = useState(null);
+  const dispatch = useDispatch();
 
   const searchParams = useSearchParams();
   const location = searchParams.get('topic');
@@ -97,6 +100,7 @@ export default function FillInBlanksClient() {
       if (!res.ok) throw new Error(`Error submitting responses: ${res.statusText}`);
 
       alert(`Submitted! Your score: ${calculatedScore} / ${quiz.questions.length}`);
+      dispatch(fetchUserFromDB());
     } catch (err) {
       setError(err.message || 'Submission failed');
     } finally {

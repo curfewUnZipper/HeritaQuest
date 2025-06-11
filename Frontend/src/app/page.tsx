@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import Navigation from './components/Navigation'
 import UserMenu from './components/UserMenu';
 import GameSelectMenu from './components/GameSelectMenu';
 import GameButton from './components/GameButton';
@@ -31,30 +32,12 @@ function PageContent() {
 
   return (
     <>
-      <UserMenu />
-      <GameButton className="absolute top-4 right-18" />
-
-      {isGameMenuOpen && (
-        <div className="fixed top-16 right-4 z-[10000]">
-          <GameSelectMenu
-            onClose={() => setIsGameMenuOpen(false)}
-            locationName={locationName}
-            coordinates={position}
-          />
-        </div>
-      )}
-
-      <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-        <header className="p-4 bg-[#1c5366] text-white font-bold text-xl">Herita Quest</header>
-
-        <div className="px-4 py-2 bg-[#badbde] text-[#1e40af] font-semibold">
-          {locationName}
-          {position && (
-            <div className="font-normal text-sm">
-              Lat: {position[0].toFixed(4)}, Lng: {position[1].toFixed(4)}
-            </div>
-          )}
-        </div>
+        <Navigation
+  isGameMenuOpen={isGameMenuOpen}
+  setIsGameMenuOpen={setIsGameMenuOpen}
+  locationName={locationName}
+  position={position ?? null}
+/>
 
         <div style={{ flex: 1 }}>
           <MapView
@@ -64,7 +47,7 @@ function PageContent() {
             setLocationName={setLocationName}
           />
         </div>
-      </div>
+  
     </>
   );
 }
